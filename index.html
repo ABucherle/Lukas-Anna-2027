@@ -96,16 +96,22 @@
 
   /* ===== Nav — mobile-first: compact bar + slide-in panel ===== */
   .glass-nav{
+    position:relative;
     display:flex; align-items:center; justify-content:space-between;
     padding: 14px 18px;
+    color: var(--ink);
+    transition: padding .3s var(--ease);
+  }
+  .glass-nav::before{
+    content:""; position:absolute; inset:0; z-index:0;
     background: rgba(16,24,18,.5);
     backdrop-filter: blur(16px) saturate(160%);
     -webkit-backdrop-filter: blur(16px) saturate(160%);
     border-bottom: 1px solid var(--silver-line);
-    color: var(--ink);
-    transition: background .4s var(--ease), box-shadow .3s var(--ease), padding .3s var(--ease);
+    transition: background .4s var(--ease), box-shadow .3s var(--ease);
   }
-  .glass-nav.is-scrolled{ background:rgba(12,19,14,.78); box-shadow:var(--glass-shadow); }
+  .glass-nav.is-scrolled::before{ background:rgba(12,19,14,.78); box-shadow:var(--glass-shadow); }
+  .glass-nav > .nav-mono, .glass-nav > .nav-toggle{ position:relative; z-index:1; }
   .nav-mono{ font-family: var(--font-display); font-size:18px; text-decoration:none; letter-spacing:var(--h-tracking); }
   .nav-toggle{
     background:none; border:1px solid var(--silver-line); border-radius:10px;
